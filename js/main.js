@@ -4,7 +4,21 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. GSAP Hero Entrance
+  // 1. Sticky Scroll Navbar Handler (Fixes white-on-white text contrast on scroll)
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+  }
+
+  // 2. GSAP Hero Entrance
   if (typeof gsap !== 'undefined') {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.from('.hero-headline', { opacity: 0, y: 30, duration: 0.9, delay: 0.1 })
@@ -16,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .from('.floating-marquee-badge', { opacity: 0, scale: 0.6, duration: 0.7 }, '-=0.5');
   }
 
-  // 2. Testimonial Carousel Handler
+  // 3. Testimonial Carousel Handler
   const testimonialCards = document.querySelectorAll('.testimonial-card');
   const prevBtn = document.getElementById('prevReview');
   const nextBtn = document.getElementById('nextReview');
@@ -40,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Interactive Timeline Step Switcher
+  // 4. Interactive Timeline Step Switcher
   const nodeBtns = document.querySelectorAll('.node-btn');
   const timelineData = [
     { num: '01', title: 'Seleção Diária de Carnes Nobres', desc: 'Escolhemos a dedo cada corte de carne, linguiça e ingrediente fresco para garantir que cada espeto entregue um sabor artesanal incomparável.' },
@@ -67,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. FAQ Accordion Handler
+  // 5. FAQ Accordion Handler
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const questionBtn = item.querySelector('.faq-question');
@@ -80,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Hamburger Button Mobile Menu
+  // 6. Hamburger Button Mobile Menu
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener('click', () => {
