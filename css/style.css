@@ -133,7 +133,7 @@ button {
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 100;
+  z-index: 1001;
 }
 
 .banner-container {
@@ -196,25 +196,20 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   04. REFERENCE-FIDELITY NAVBAR & STICKY SCROLL CONTRAST HANDLER
+   04. REFERENCE-FIDELITY NAVBAR (DARK GLASS BAR FOR 100% CONTRAST READABILITY)
    -------------------------------------------------------------------------- */
 .navbar-header {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 999;
-  padding: 16px 0;
-  background-color: transparent;
-  transition: background-color 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
-}
-
-/* Sticky Scrolled State with Ultra High Contrast */
-.navbar-header.scrolled {
-  background: rgba(255, 255, 255, 0.96);
+  z-index: 1000;
+  padding: 12px 0;
+  background: rgba(18, 18, 18, 0.92); /* Dark charcoal glass bar for maximum 21:1 contrast */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.35s ease, padding 0.35s ease;
 }
 
 .navbar-container {
@@ -241,29 +236,19 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
+  color: #FFFFFF; /* PURE WHITE ICON ON DARK GLASS */
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-social-icon:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--color-gold);
+  color: #121212;
   transform: translateY(-2px);
 }
 
 .nav-social-icon svg {
   width: 18px;
   height: 18px;
-}
-
-/* Scrolled Nav Social Icons */
-.navbar-header.scrolled .nav-social-icon {
-  background: rgba(18, 18, 18, 0.08);
-  color: #121212;
-}
-
-.navbar-header.scrolled .nav-social-icon:hover {
-  background: var(--bg-hero-vibrant);
-  color: #FFFFFF;
 }
 
 .nav-logo-badge {
@@ -274,14 +259,14 @@ button {
   background: #FFFFFF;
   padding: 6px 20px;
   border-radius: 100px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-logo-badge:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .badge-logo-img {
@@ -294,7 +279,7 @@ button {
   font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 800;
-  color: #121212; /* ALWAYS DARK READABLE TEXT ON WHITE LOGO PILL */
+  color: #121212; /* DARK READABLE BRAND NAME ON WHITE BADGE */
   letter-spacing: -0.02em;
 }
 
@@ -314,23 +299,12 @@ button {
 .nav-item {
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--text-white); /* White text on red hero */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF; /* PURE WHITE HIGH-CONTRAST READABLE TEXT */
   transition: color 0.3s ease;
 }
 
 .nav-item:hover {
   color: var(--color-gold);
-}
-
-/* Scrolled Nav Links (DARK READABLE TEXT ON WHITE SCROLLED NAVBAR) */
-.navbar-header.scrolled .nav-item {
-  color: #121212;
-  text-shadow: none;
-}
-
-.navbar-header.scrolled .nav-item:hover {
-  color: var(--bg-hero-vibrant);
 }
 
 .hamburger-btn {
@@ -353,18 +327,8 @@ button {
 .hamburger-btn .bar {
   width: 18px;
   height: 2px;
-  background-color: var(--text-white);
+  background-color: #FFFFFF;
   border-radius: 2px;
-  transition: background-color 0.3s ease;
-}
-
-/* Scrolled Hamburger Button */
-.navbar-header.scrolled .hamburger-btn {
-  background: rgba(18, 18, 18, 0.08);
-}
-
-.navbar-header.scrolled .hamburger-btn .bar {
-  background-color: #121212;
 }
 
 /* --------------------------------------------------------------------------
@@ -1328,7 +1292,6 @@ button {
 @media (max-width: 768px) {
   .announcement-banner { display: none; }
   .navbar-header { padding: 12px 0; }
-  .navbar-header.scrolled { padding: 8px 0; }
   .navbar-container { padding: 0 16px; grid-template-columns: auto 1fr auto; }
   .nav-socials-left { display: none; }
   .badge-brand-name { font-size: 1.15rem; }
